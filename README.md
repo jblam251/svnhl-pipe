@@ -1,2 +1,2 @@
 # svnhl-pipe
-Structural Variant Calling Pipeline for Non-Hodgkin Lymphoma 
+Structural Variant Calling Pipeline for Canine Non-Hodgkin Lymphoma 
