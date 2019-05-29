@@ -1,0 +1,41 @@
+Interprating VCF Output Files
+-----------------------------
+
+05 07 2019
+
+- Number of Calls per Tool:
+	Delly:    5214
+	Brkdncr:  3181
+	CNVnator: 555
+
+- Do these calls align? initially doesnt appear so
+
+- something to consider...
+	Delly: 	Tumor + Normal 	+ REF   = VCF
+	Brkdnr: Tumor + Normal 		= TSV
+	CNVna: 	Tumor 		+ REF   = TSV
+
+		* does it matter that some dont even consider the reference?
+
+- script 'script1.awk' will parse the breakpoint positions, include a 50-size window around each position, then prepare them for grep ("^number$).  When grepping cnvnator positions +/-50 to breakdancer and delly, no matches were found
+
+- next time:
+	- read lit on vcf merging
+	- look at KNOWN SVs on chr13 canine...are ANY tools deteciting events?
+	- again, review the tools' publications 
+
+- using 20bp windows (and 'posts') to detect any overlap among tsv files. this is done using script1.awk. 
+
+- sofwtare (SURVIVOR or SVDB) may be able to do the same thing but much faster
+
+- results....breakdancer and delly appear to have some overlap (~300 / 3181 calls).  this is also at a relitively small window (20bp).  however, cnvnator isn't calling any overlap whatsoever.  this makes sense, as cnvnator calls BINS, not single-base resolution breakpoints.  
+
+- currently two commands were executed to compare breakdancer+delly vcfs:
+
+  	$ grep -f delly_window brkdncr_posts > delly_brkdncr.mrg
+  	$ grep -f brkdncr_window delly_posts > brkdncr_delly.mrg
+
+	* these files are SLIGHTLY different (3 of 293 calles were included in 
+	one output, but not in the other. how is this possible?
+
+ 

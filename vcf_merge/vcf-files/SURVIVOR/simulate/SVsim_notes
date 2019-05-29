@@ -1,0 +1,39 @@
+Running SURVIVOR SVsim Requires...
+1: Reference fasta file
+2: Parameter file
+3: SNP mutations frequency (0-1)
+4: 0= simulated reads; 1= real reads
+	** NOTE: It depends if you want to alter the reference and simulate
+	reads based on this to map it back to the original reference to 
+	evaluate the SV caller (parameter 4 =0) . OR use real reads to map them
+	to an alternated genome to evaluate the SV caller. (parameter 4 =1)
+5: output prefix
+
+
+$ SURVIVOR simSV ./reference_genome parameter_file 0.1 0 simulated
+
+
+$ cat parameter_file 
+PARAMETER FILE: DO JUST MODIFY THE VALUES AND KEEP THE SPACES!
+DUPLICATION_minimum_length: 100
+DUPLICATION_maximum_length: 10000
+DUPLICATION_number: 10
+INDEL_minimum_length: 50
+INDEL_maximum_length: 1000
+INDEL_number: 10
+TRANSLOCATION_minimum_length: 1000
+TRANSLOCATION_maximum_length: 3000
+TRANSLOCATION_number: 0
+INVERSION_minimum_length: 600
+INVERSION_maximum_length: 800
+INVERSION_number: 5
+INV_del_minimum_length: 600
+INV_del_maximum_length: 800
+INV_del_number: 5
+INV_dup_minimum_length: 600
+INV_dup_maximum_length: 800
+INV_dup_number: 0
+
+
+
+

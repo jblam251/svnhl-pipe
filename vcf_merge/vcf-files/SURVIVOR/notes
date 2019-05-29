@@ -1,0 +1,59 @@
+SURVIVER
+
+
+*** a VCF processor specifically for SVs
+
+
+Example:
+$ SURVIVOR merge sample_files 1000 2 1 1 0 30 sample_merged.vcf
+
+ - INPUT: a list of sample files (contained in a text file)
+ - 1000: maximum allowed distance of 1kb 
+	*as measured pairwise between breakpoints (beg1 vs beg2, end1 vs end2) 
+ - 2: only to report calls supported by 2 callers 
+ - 1: calls have to agree on the type (0=type agreement NULL)
+ - 1: calls have to agree on the strand (0=disregard strand)
+ - 0: dont estimate the distince based on the SV size (1=do estimate d)
+ - 30: only compare SV that are at least 30bp long 
+ - OUTPUR: print the output in sample_merged.vcf.
+
+
+The # of Common SVs Reduces when the Window (Distsnce) is Reduced
+-----------------------------------------------------------------
+$ SURVIVOR merge sample_files 20 2 1 1 0 30 sample_merged20.vcf
+$ bcftools view -H sample_merged20.vcf | wc
+     20     240    7971
+ * 20 common svs
+
+$ SURVIVOR merge sample_files 500 2 1 1 0 30 sample_merged500.vcf
+$ bcftools view -H sample_merged500.vcf | wc
+    293    3516  115525
+ * 293 common svs
+
+$ SURVIVOR merge sample_files 4000 2 1 1 0 30 sample_merged4000.vcf
+$ bcftools view -H sample_merged4000.vcf | wc
+    313    3756  130183
+ * 313 common svs
+
+
+
+
+We do Have 43 Calls made by All Three Callers
+-----------------------------------------------------------------
+$ SURVIVOR merge sample_files 1000 3 1 1 0 30 sample_merged1k-3.vcf | wc
+     43     516   19310
+
+
+
+
+
+
+vcftobed to Generate a BED File
+-----------------------------------------------------------------
+SURVIVOR vcftobed sample_merged500.vcf 0 -1 sample_merged500.bed
+	 0?
+	-1?
+
+
+
+
