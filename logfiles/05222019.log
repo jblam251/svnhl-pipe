@@ -1,0 +1,21 @@
+05 22 2019
+& 05 20 2019
+
+
+- lots of work with CNVnator output
+- two ways to merge the cnvnator data
+	1. script to splice out somatic and germline variants from cnvn outs
+	   - this is mostly finished (canineLymphoma_demo/somatic-calling/somati	   c-callingC/script3.sh)
+	   - with this output, we could run the provided cnvn2VCF script to 
+	   merge somatic calls into VCF format
+	2. analyize the genotype data from cnvnator -genotype
+	   - this requires you call cnvnator -genotype and set bin sizes
+  	   - then, create custom script to compare CN at each bin location
+	   - this would require a second script to turn the outpt into VCF
+	   - may be good for graphing though...
+	   - outputs already generated on cluster, see genotype500 and B/F500
+
+
+
+
+

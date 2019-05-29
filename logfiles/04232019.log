@@ -1,0 +1,6 @@
+04 23 2019
+
+- breakdancer ran on cluster commandline (successful?)
+- investigate why .sam files dont have read groups (@RG). these may be required by breakdancer
+- job submitted to sbatch for breakdancer 2-step pipeline...likely wont work
+- breakdancer output files comped to local cpu (.png histograms and config)

@@ -1,0 +1,13 @@
+05 24 2019
+
+- beginning to merge the somatic calling scripts into the master
+
+- breakdancer soamtic script is functional in master branch
+
+	* somatic0524.sh on cluster
+
+- currently, the script will run through all steps and breakdancer, nexr steps are to get DELLY and CNVnator functional
+
+
+
+

@@ -1,0 +1,15 @@
+04 25 2019
+
+- previously, breakdancer was executed successfully from cluster with a tsv output file
+
+- if we're merging vcf files, we need all files in uniform format.  two scripts explored for tsv-to-vcf transformation
+	1. MetaSV's breakdancer_reader.py
+	2. tbeek (ALLBio)'s breakdancer2vcf.py
+
+- tbeek script works well, data could be formatted better for my purposes. namely moving the SVTYPE= from the INFO field to the ALT field.  this would make it more compatable with my DELLY output.  modify script??
+
+- two new directores make in the /tool_demo/brkdncr folder:
+	- metasv_scripts
+	- tbeek_scripts
+
+

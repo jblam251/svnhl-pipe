@@ -1,0 +1,13 @@
+04 22 2019
+
+- new folder created (tools_demo) for demo of all software tools
+- sickle installed on local, successfully trimms PE reads
+- master.sh and small_variants.sh both have PE qc functionality
+
+
+
+TODO
+
+* build delly portion based on ch13 sample (cant really isolate 10k reads from fastq as theyll be different bt B and F files)
+
+* execute CNVnater and breakdancer on ch13 reads

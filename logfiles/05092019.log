@@ -1,0 +1,18 @@
+05 09 2019
+
+
+- SURVIVOR downloaded and used to merge vcf files
+	-SURVIVOR has tons of functuality, should consult publication
+
+- uploaded data into IGV for visual verification
+	-FBAM
+	-BBAM
+	-merged vcf bed file (from SURVIVOR)
+
+- new folder created with IGV screenshots (/supplementary/igv_images)
+
+- NEED to integrate CNVnator output...right now, none of the calls made by cnvnator correspond to the breakdancer or delly outputs.  the current vcf merge file (performed by SURVIVOR) includes only reads from those two tools (~293 calls)
+
+
+
+

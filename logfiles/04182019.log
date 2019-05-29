@@ -1,0 +1,23 @@
+04 19 2019
+
+- 'scripts' folder created
+- tenKfqs folder created (PE fastq files w/10,000 reads apiece from case6-B)
+- small variant pipeline is functional
+	fastq -> [samblaster] -> sam -> bam -> vcf
+- samblaster is implemented in current master script, however when it calls DR and SR they are outputte as sams. those sams are then run through the remainder of the pipeline...not good
+- current implementation uses mpileup specific for small variants
+- also need to include QC before alignment (fastx?) 
+
+- fastx toolkit called to filter FASTQs (fastq -> fastx -> alignment).  the issue is taht fastx is removing single mates in PE reads, disordering the paired reads and messing up all downstream analyses. this is in withQfilter.sh
+- new pipeline copied to temp.sh to incorporate DELLY reads
+- to perform DELLY, need B and F sorted bams
+
+
+
+TODO
+
+* build delly portion based on ch13 sample (cant really isolate 10k reads from fastq as theyll be different bt B and F files)
+
+* look into filtering PE reads
+
+* execute CNVnater and breakdancer on ch13 reads

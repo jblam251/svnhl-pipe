@@ -1,0 +1,17 @@
+05 01 2019
+
+- script sv_callers.sh *run on cluster) successfully executed.  three vcf files were created, one for each caller
+
+- on cluster, two folders created: inputs and outputs.  these are for running practice scripts where inputs will be the inputted data and outputs will be the tescript, it's log, and eventually the outputted files
+
+- new script created to merge the top and bottom of the pipeline
+
+	merged_script1.sh
+
+- failing failing failing...need to figure out how to pipe data with parallel
+
+- currently on cluster (outputs/merged_script1_run1) three attempts have been made, each with file name problems as a result of running parallel.  see directory's logfile for more info.  also see the input directory for the trail (inputs/merged_script1_run) for the otputs of the latest attempt
+
+-also keep in-mind, ill need to re-format the brkdncr and cnvnator VCFs eventually
+
+

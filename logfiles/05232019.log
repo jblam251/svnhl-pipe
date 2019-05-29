@@ -1,0 +1,10 @@
+05 23 2019
+
+- script3 for calling somatic variants from CNVNator output is completed
+
+- cnvnator somatic vcf generated (~250 calls)
+
+- C B and D somatic calls merged...not much overlap, took some IGV shots
+
+
+

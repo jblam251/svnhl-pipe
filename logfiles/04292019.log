@@ -1,0 +1,12 @@
+04 29 2019
+
+- cluster work...attempting to script a pipeline for CNVNator
+
+- currenrtly, CNVNator was performed using sequential commands, putting those commands into a script and running.  Varions issues, including graham cluster stalling 
+
+- aseperate new script created on cluster 'sv_detection.sh'(or something similar starting with "sv_".  GOal is to input two bam files (BBAM and FBAM), and generate three VCF files, one from each tool--
+	--DELLY
+	--Breakdancer
+	--CNVNATOR
+
+- Tentitive pipeline visualization created on PAGES "0429_pipe-in-progress"

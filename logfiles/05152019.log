@@ -1,0 +1,12 @@
+05 15 2019
+
+- lots of work on VCF analysis and differenciating bt germline/somatic calls
+- each tool requires a different set of commands to isolate somatic events
+	* see "somatic-calls" folder for info on all three tools
+
+- currently, DELLY and breakdancer have isolated somatic calls
+- CNVnator does not, as it requires two runs (one with tumor and one with normal) then a user-comoparison and genotypinc of the resulting tsvs
+	* need to come up with useful way of isoating somatic calls for CNVn
+
+
+

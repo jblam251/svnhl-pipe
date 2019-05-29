@@ -1,0 +1,223 @@
+### LOG FILE ###
+
+
+
+***size of unzipped datafile***
+GZIPPED FILE: 38.08GB
+UNZIPPED FILE: 143.49GB
+
+> ls -al
+total 280289560
+drwxr-xr-x   4 jacobblamer  staff           128 Jan  4 11:40 .
+drwxr-xr-x  10 jacobblamer  staff           320 Jan  3 13:32 ..
+-rw-r--r--   1 jacobblamer  staff  143496789239 May 23  2017 HI.4204.006.NS_Adaptor_6.6-F_R1.fastq
+-rw-r--r--   1 jacobblamer  staff             0 Jan  4 11:40 readme
+
+
+***wc of unzipped file***
+< calculation done in python >
+first 16 lines = 1408b
+total lines = 143.5Gb
+1408x = 143500000000 * 16
+LINE COUNT: x = 1,630,681,818
+READ COUNT: x/4 = 407,670,454
+
+
+***take 40,000,000 lines (10,000,000 reads, 2.5% of total) from each file***
+
+> head -40000000 HI.4204.006.NS_Adaptor_6.6-F_R1.fastq > jb_HI.4204.006.NS_Adaptor_6.6-F_R1.fastq
+> rm HI.4204.006.NS_Adaptor_6.6-F_R1.fastq
+
+-rw-r--r--   1 jacobblamer  staff  43409150247 May 23  2017 HI.4204.006.NS_Adaptor_6.6-F_R2.fastq.gz
+-rw-r--r--   1 jacobblamer  staff  143496789239 May 23  2017 HI.4204.006.NS_Adaptor_6.6-F_R2.fastq
+
+> head -40000000 HI.4204.006.NS_Adaptor_6.6-F_R2.fastq > jb_HI.4204.006.NS_Adaptor_6.6-F_R2.fastq
+> rm HI.4204.006.NS_Adaptor_6.6-F_R2.fastq
+-rw-r--r--   1 jacobblamer  staff  45259694651 May 22  2017 HI.4204.005.NS_Adaptor_5.6-B_R1.fastq.gz
+-rw-r--r--   1 jacobblamer  staff  174054313480 May 22  2017 HI.4204.005.NS_Adaptor_5.6-B_R1.fastq
+
+> head -40000000 HI.4204.005.NS_Adaptor_5.6-B_R1.fastq > jb_HI.4204.005.NS_Adaptor_5.6-B_R1.fastq
+-rw-r--r--   1 jacobblamer  staff  52570475228 May 22  2017 HI.4204.005.NS_Adaptor_5.6-B_R2.fastq.gz
+-rw-r--r--   1 jacobblamer  staff  174054313480 May 22  2017 HI.4204.005.NS_Adaptor_5.6-B_R2.fastq
+
+> head -40000000 HI.4204.005.NS_Adaptor_5.6-B_R2.fastq > jb_HI.4204.005.NS_Adaptor_5.6-B_R2.fastq
+
+
+***FINAL DEMO READS***
+> ls -al 
+total 27684320
+drwxr-xr-x   9 jacobblamer  staff         288 Jan  4 13:36 .
+drwxr-xr-x  10 jacobblamer  staff         320 Jan  3 13:32 ..
+-rw-r--r--   1 jacobblamer  staff  3536188162 Jan  4 13:00 jb_HI.4204.005.NS_Adaptor_5.6-B_R1.fastq
+-rw-r--r--   1 jacobblamer  staff  3536188162 Jan  4 13:26 jb_HI.4204.005.NS_Adaptor_5.6-B_R2.fastq
+-rw-r--r--   1 jacobblamer  staff  3535714405 Jan  4 12:02 jb_HI.4204.006.NS_Adaptor_6.6-F_R1.fastq
+-rw-r--r--   1 jacobblamer  staff  3535714405 Jan  4 12:29 jb_HI.4204.006.NS_Adaptor_6.6-F_R2.fastq
+-rw-r--r--   1 jacobblamer  staff        3272 Jan  4 13:36 log
+-rw-r--r--   1 jacobblamer  staff        3899 Jan  4 12:45 log.backup
+-rw-r--r--   1 jacobblamer  staff        1408 Jan  4 11:44 temp
+
+> wc *
+ 40000000 50000000 3536188162 jb_HI.4204.005.NS_Adaptor_5.6-B_R1.fastq
+ 40000000 50000000 3536188162 jb_HI.4204.005.NS_Adaptor_5.6-B_R2.fastq
+ 40000000 50000000 3535714405 jb_HI.4204.006.NS_Adaptor_6.6-F_R1.fastq
+ 40000000 50000000 3535714405 jb_HI.4204.006.NS_Adaptor_6.6-F_R2.fastq
+ 160000000 200000000 14143805134 total
+
+
+
+
+
+****Preliminary Alignment on 100,000 Reads (400,000 lines)****
+
+
+> head -400000 jb_HI.4204.005.NS_Adaptor_5.6-B_R1.fastq > 100k-5.6R1sample.fastq
+> head -400000 jb_HI.4204.005.NS_Adaptor_5.6-B_R2.fastq > 100k-5.6R2sample.fastq
+
+> time bwa mem -t 2 /Users/jacobblamer/Personal/sample_data/canine_genome/canFam3.fa ./100k-5.6R1sample.fastq ./100k-5.6R2sample.fastq > 100k-5.6.sam
+
+###NOTE###
+100,000 reads at 170 seconds
+10,000,000 reads at ? seconds
+	** 17,000 seconds ( = 4.7 hours)
+407,000,000 reads at ? seconds
+	** 691,900 seconds ( = 192 hours)
+
+[M::bwa_idx_load_from_disk] read 0 ALT contigs
+[M::process] read 132452 sequences (20000252 bp)...
+[M::process] read 67548 sequences (10199748 bp)...
+[M::mem_pestat] # candidate unique pairs for (FF, FR, RF, RR): (1, 55385, 2, 1)
+[M::mem_pestat] skip orientation FF as there are not enough pairs
+[M::mem_pestat] analyzing insert size distribution for orientation FR...
+[M::mem_pestat] (25, 50, 75) percentile: (252, 335, 453)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 855)
+[M::mem_pestat] mean and std.dev: (362.24, 147.97)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 1056)
+[M::mem_pestat] skip orientation RF as there are not enough pairs
+[M::mem_pestat] skip orientation RR as there are not enough pairs
+[M::mem_process_seqs] Processed 132452 reads in 117.195 CPU sec, 59.010 real sec
+[M::mem_pestat] # candidate unique pairs for (FF, FR, RF, RR): (1, 28314, 0, 0)
+[M::mem_pestat] skip orientation FF as there are not enough pairs
+[M::mem_pestat] analyzing insert size distribution for orientation FR...
+[M::mem_pestat] (25, 50, 75) percentile: (257, 343, 461)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 869)
+[M::mem_pestat] mean and std.dev: (369.26, 151.23)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 1073)
+[M::mem_pestat] skip orientation RF as there are not enough pairs
+[M::mem_pestat] skip orientation RR as there are not enough pairs
+[M::mem_process_seqs] Processed 67548 reads in 53.438 CPU sec, 26.776 real sec
+[main] Version: 0.7.17-r1188
+[main] CMD: bwa mem -t 2 /Users/jacobblamer/Personal/sample_data/canine_genome/canFam3.fa ./100k-5.6R1sample.fastq ./100k-5.6R2sample.fastq
+[main] Real time: 89.279 sec; CPU: 173.677 sec
+
+real	1m29.311s
+user	2m49.898s
+sys	0m3.790sa
+
+
+*** TIME ANALYSIS (in R) ***
+[ based on bwa runs at 40 200 400 2000 4000 20000 40000 200000 400000 2000000 4000000 20000000 and 40000000. see demo-alignment_times/script1.sh ]
+
+## RUNTIME ANALYSIS ######################
+## machine specs??
+## 2 Threads
+#
+# HI.4204.005.NS_Adaptor_5.6-B_R1.fastq (full read set)     
+# bytes: 143,496,789,239 bytes  
+# lines: 1,623,140,332 lines  
+# predicted samfile size: 373,091,652,021 bytes
+#
+# alignment times:      227,937.3s (real)
+#         		550,207.8s (user) 
+#         		3,149.31s (sys)
+# 
+# sam_to_bam times:	18,698.61 (real)
+#			18,061.02 (user)
+#			637.58 (sys)
+#
+######
+#
+#
+# jb_HI.4204.005.NS_Adaptor_5.6-B_R1.fastq (sample - 10 million reads)
+# bytes: 3,536,188,162 bytes    
+# lines: 40,000,000 lines     
+# predicted samfile size: 9,194,089,221
+# 
+# alignment times: 	6,853.71 (real)
+#         		13,562.48 (user)
+#         		80.35 (sys)
+#
+# sam_to_bam times:	460 (real)
+#			445 (user)
+#			15.71 (sys)
+#
+########################################
+
+
+
+**** Timing of SAM to BAM Pipeline ***
+
+MY SAM FILE: 87,984,494 bytes	
+400,000 Lines (100,000 reads)
+real time: 11.467s
+
+Jacobs-MacBook:demo-samfiles jacobblamer$ sam_timing.sh
+real	0m11.467s
+user	0m11.076s
+sys	0m0.391s
+
+Jacobs-MacBook:demo-samfiles jacobblamer$ ls
+-rw-r--r--   1 jacobblamer  staff  87984494 Jan  7 15:27 100k-5.6.sam
+-rw-r--r--   1 jacobblamer  staff  28599004 Jan 12 17:51 100k-5.6.sort.bam
+-rw-r--r--   1 jacobblamer  staff   2847776 Jan 12 17:51 100k-5.6.sort.bam.bai
+-rw-r--r--   1 jacobblamer  staff  29061937 Jan 12 17:51 100k-5.6.temp.bam
+-rw-r--r--   1 jacobblamer  staff  35269532 Jan  7 15:20 100k-5.6R1sample.fastq
+-rw-r--r--   1 jacobblamer  staff  35269532 Jan  7 15:21 100k-5.6R2sample.fastq
+-rw-r--r--   1 jacobblamer  staff        89 Jan 12 17:51 bamlist
+-rwxr-xr-x   1 jacobblamer  staff       633 Jan 12 17:50 sam_timing.sh
+
+
+
+***COPY OF SBATCH SCRIPT for 10M SAMPLE***
+<>
+<>	see align_trial_8.sh in alignment folder
+<>
+
+
+**** CASE 6 FILES COPIED TO LOCAL CPU ****
+Zipped Sizes
+staff  45259694651 May 22  2017 HI.4204.005.NS_Adaptor_5.6-B_R1.fastq.gz
+staff  52570475228 May 22  2017 HI.4204.005.NS_Adaptor_5.6-B_R2.fastq.gz
+staff  38084932303 May 23  2017 HI.4204.006.NS_Adaptor_6.6-F_R1.fastq.gz
+staff  43409150247 May 23  2017 HI.4204.006.NS_Adaptor_6.6-F_R2.fastq.gz
+
+Unzipped?
+
+
+
+#### CASE6-F FILES ALIGNED ###
+
+
+#### SEGREGATE INTO CHROMOSOMES ####
+jacobblamer$ time samtools view jb_HI.4204.005.NS_Adaptor_5.6-B.sort.bam "chr1" > chr1_reads
+
+real	0m3.785s
+user	0m2.857s
+sys	0m0.895s
+
+2285554841 = 3.785
+102729183162 = x
+x = 170.1
+
+#### time calc for case B ###
+case_F....6-03:39:55 for 143Gb Files
+case_B....    ?      for 174Gb Files
+  * 
+
+
+
+
+#### Filtering for CH13 reads ####
+<on local cpu>
+samtools view ./data/HI.4204.006.NS_Adaptor_6.6-F.sort.bam "chr13" > chr13_reads
+<on server>
+samtools view ./HI.4204.005.NS_Adaptor_5.6-B.sort.bam "chr13" > chr13_reads

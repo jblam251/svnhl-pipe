@@ -1,0 +1,20 @@
+05 29 2019
+
+- somatic calling nearly finished...currently DELLY and brkdncr can output two SV files (one for somatic, one for germline)
+
+- delly somatic/germiline calls should be working, however the subsetted data is small and doesn't have any somatic or germline calls contained within...could be a future issue 
+
+- next, need to modify cnvnator script to accomidate all chromosomes (not only 13)
+	* also need to modify the python cnvnator script
+
+- new subset taken
+	* case #2, first 300,000 reads (head 1,200,000)
+	* subset named hundK_fq
+	* includes reads from most chromosomes (not only chr13)
+
+ - two scripts on the cluster
+	- somatic0524.sh is the most recent functional version of the pipeline
+	- somatic_SVonly0529.sh is the same as somatic0524 except without alignment, filtering, etc
+
+
+

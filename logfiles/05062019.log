@@ -1,0 +1,11 @@
+05 06 2019
+
+- issues at 'partition' step in cnvnator
+- otherwise, other two tools (+ other steps in cnvnator) are functional
+- partition won't run
+	may require many cores at-once (~20 used on the command line)
+	may be an issue with parallel running w/ root
+- run partition in isolartion next time
+
+
+

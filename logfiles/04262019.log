@@ -1,0 +1,28 @@
+04 26 2019
+
+- working to homogenize delly and breakdancer vcffiles
+
+- Core fields are compatable, FORMAT fields need work (see written notes)
+
+- edited script (/scripts/jb_edits/breakdancer2vcf_JB.sh)
+
+- also, quality considerations!
+	- DELLY Defaults: 
+		PE >= 3, (NOT CHANGABLE??)
+		MAPQ >=20 (MAPQ can be modified w/ -u[INT])
+	- Breakdancer Defaults:
+		num_Reads (analogous to PE) >= 2
+		Score (a Poisson Determined Confidence) >= 30
+
+	  ** we could modulate 3 of these 4 QC parameters
+
+
+- what about the CNVnator VCF Output?
+- Read Breakdancer and DELLY Publications
+
+
+	 
+
+
+
+

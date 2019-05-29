@@ -1,0 +1,29 @@
+05 10 2019
+
+- modifying SURVIVOR merge command, a VCF was created (sample_merge1k-3.vcf) that contained 43 calles which ALL three tools called at a 1k bp window
+
+- this vcf was loaded into IGV and a few more images were saved
+
+******
+- Two Key Challanges at the Moment
+	1. Whats the best way to merge the cnvnator calls? cnvnator makes
+	  calls in bins, unlike the other two tools that have single base
+	  resolution
+	2. need a way to test the efficacy of the pipeline....how can I 
+	  tell if the calls being made are legitimate?
+		- SURVOVIR: simulate, evaluate, merge
+			* this will require simulated bam reads (which
+			can be done using MASON software or another tool
+			called CreateTranslocations
+			* can use own reads, however, would have to re-align
+			the data
+		- CreateTranslations can simulate SVs AND produce bamfiles
+
+	*** FIGURE OUT WHAT DATA IS BEING COMPARED IN EACH TOOL
+	ie. cnvnator is based on BBAM vs REF, while delly is BBAM v FBAM
+
+******
+
+
+
+

@@ -1,0 +1,21 @@
+05 07 2019
+
+- Master script is updated on cluster
+
+- RECAP: the master script takes fqs and produces three VCF files (one from each SV caller)
+
+- the question now is do these callers agree?
+	initially observations say no
+	breakpoints bt cnvnator and other two dont correlate AT ALL
+
+- script 'script1.awk' will parse the breakpoint positions, include a 50-size window around each position, then prepare them for grep ("^number$).  When grepping cnvnator positions +/-50 to breakdancer and delly, no matches were found
+	* script is also ugly and takes forever
+
+
+- next time: 
+        - read lit on vcf merging
+        - look at KNOWN SVs on chr13 canine...are ANY tools deteciting events?
+        - again, review the tools' publications
+
+
+
