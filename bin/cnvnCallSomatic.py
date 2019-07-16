@@ -7,8 +7,8 @@ if sys.argv[3] == "-tumor":
     tumorfile = sys.argv[4]
 if sys.argv[5] == "-somatic_out":
     somatic_outfile = sys.argv[6]
-if sys.argv[7] == "-germline_out":
-    germline_outfile = sys.argv[8]
+#if sys.argv[7] == "-germline_out":
+#    germline_outfile = sys.argv[8]
 
 
 
@@ -25,7 +25,7 @@ for line in tf_as_list:
     tf_line_count += 1
 
 of_open = open(somatic_outfile, "w+")
-ofg_open = open(germline_outfile, "w+")
+#ofg_open = open(germline_outfile, "w+")
 for i in range(0, nf_line_count):
     triVal1 = nf_as_list[i].split("\t")[1]
     chromosome1 = int(str(triVal1.split(":")[0])[3:])
@@ -47,7 +47,7 @@ for i in range(0, nf_line_count):
             if abs((beg1-beg2) + (end1-end2)) < max:
                 if (abs(CN1 - CN2) < 0.5) and (CN1 > 2.5 and CN2 > 2.5) or (CN1 < 1.5 and CN2 < 1.5):
                     ## GERMLINE CALL
-                    ofg_open.writelines(tf_as_list[j])
+                    #ofg_open.writelines(tf_as_list[j])
                     break
                 elif (abs(CN1 - CN2) > 0.5) and (CN2 > 2.5 and CN1 < 2.5) or (CN2 < 1.5 and CN1 > 1.5):
                     ## SOMATIC CALL (BOTH SVS COMPARED TO REF)
@@ -91,4 +91,6 @@ for i in range(0, tf_line_count):
             break
 
 of_open.close()
-ofg_open.close()
+#ofg_open.close()
+
+
