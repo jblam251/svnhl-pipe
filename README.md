@@ -5,4 +5,7 @@ Structural variant calling with svnhl-pipe requires paired-end reads.  Input can
 
 Variant calls will eventually be assembled and mapped back to the reference. See https://github.com/jblam251/svnhl-pipe/blob/master/pipe-08092019.png for a schematic of the svnhl-pipe workflow.
 
+![alt text](https://github.com/jblam251/svnhl-pipe/blob/master/pipe-08092019.png)
+
+
 
